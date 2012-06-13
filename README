@@ -1,0 +1,41 @@
+Estela - README
+--------------------
+
+Introduction - background
+-------------------------
+
+This piece of software is a part of the Flipzu stack.
+
+Flipzu was an audio broadcasting system that would let you stream and listen to live audio broadcasts from your cell phone (Android & iOS) or web browser.
+
+The main focus was ease of use: you hit a button, and you were live on your social networks. 
+
+Opening in mid-2010, Flipzu gained a respectable regional traction but ceased operations as of 14th May 2012, due to lack and funding.
+
+This software is provided as-is, since it's not being developed or maintained any more. If you need some aditional information or help, please check the source code for contact information.
+
+
+Summary
+-------
+
+Estela is an HTTP audio streaming and transcoding server, built in Java using the Netty framework [0].
+
+It consists of a "write" socket, where broacasters connect and broadcast raw audio in AAC of MP3 format, and a "read" socket, where clients get a raw stream in MP3.
+
+For authentication, the broadcaster had to write a 32 bytes key prior to broadcasting. This key was validated against Flipzu Web Services, which no longer exist. So, if you want to modify such behaviour, take a look at AuthHandler and FlipInterface files.
+
+Originally, Estela received streams in AAC from iOS devices, in MP3 from Android devices, and also in MP3 from a Red5+Xuggler server who handled the web recorder. Estela did the transcoding (if necessary) and buffering+delivery of the streams.
+
+[0] http://www.jboss.org/netty
+
+
+Usage instuctions
+-----------------
+
+- Build using ant.
+- Build the "getcommand" tool located in the "cmd" directory.
+- Take a look at estela.properties for configuration, like the location of the estelaStats server, etc.
+- Start with the start.sh script. Check that file and customize it for your needs.
+- If everything goes OK, you can use the "estela" init script as a template to start it at boot time.
+
+
