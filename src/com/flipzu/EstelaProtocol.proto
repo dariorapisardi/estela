@@ -1,0 +1,83 @@
+/**
+* Copyright 2011 Flipzu
+*
+*  Licensed under the Apache License, Version 2.0 (the "License");
+*  you may not use this file except in compliance with the License.
+*  You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+*  Unless required by applicable law or agreed to in writing, software
+*  distributed under the License is distributed on an "AS IS" BASIS,
+*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*  See the License for the specific language governing permissions and
+*  limitations under the License.
+*  
+*  Initial Release: Dario Rapisardi <dario@rapisardi.org>
+*  
+*/
+
+/*
+ * Estela API Protocol definition,
+ * using Google Protocol Buffers
+ * @link http://code.google.com/p/protobuf/
+ * Dario Rapisardi <dario@rapisardi.org>
+ */
+
+package com.flipzu;
+
+option optimize_for = SPEED;
+
+message EstelaMessage {
+	enum EstelaMessageType {
+		STATS_MESSAGE = 0;
+		BROADCAST_QUERY = 1;
+	}
+
+	required EstelaMessageType message_type = 1;
+	optional StatsMessage stats_message = 2;
+	optional BroadcastQuery bcast_query = 3;
+	optional BroadcastQueryResponse bcast_query_response = 4;
+}
+
+message Broadcast {
+	optional string username = 1;
+	optional int32 id = 2;
+	optional int32 listeners = 3;
+	optional string uuid = 4;
+}
+
+message StatsMessage {
+	optional string server_name = 1;
+	optional string server_ip = 2;
+	optional int32 read_port = 3;
+	optional int32 write_port = 4;
+	repeated Broadcast broadcast = 5;
+  
+	enum StatsMessageType {
+		REGISTER_SERVER = 0;
+		UPDATE_STATS = 1;
+		CLOSE_BCAST = 2;
+	}
+	
+	required StatsMessageType message_type = 6;
+}
+
+message BroadcastQuery {
+	optional string username = 1;
+}
+
+message BroadcastQueryResponse {
+
+	enum ResponseCode { 
+		FOUND = 0;
+		NOT_FOUND = 1;
+	}
+	required ResponseCode response_code = 1;
+	optional string hostname = 2;
+	optional string server_ip = 3;
+	optional int32 read_port = 4;
+	optional int32 write_port = 5;
+	optional Broadcast broadcast = 6;
+}
+

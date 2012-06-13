@@ -1,0 +1,7 @@
+Workaround to compile in x86_64:
+
+cd /usr/lib/gcc/x86_64-linux-gnu/4.4
+$ sudo cp crtbeginT.o crtbeginT.orig.o
+$ sudo cp crtbeginS.o crtbeginT.o
+
+And add "-fPIC" to gcc in jnicompile.sh
