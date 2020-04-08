@@ -48,7 +48,7 @@ echo "Running on " $OS
 # JAVA options
 # You can set JAVA_OPTS to add additional options if you want
 # Set up logging options
-EXTRA_OPTS="-Dfile.encoding=UTF-8 -Dlog4j.debug=true -XX:+UseParallelGC -Xms${JAVA_MAX_RAM} -Xmx${JAVA_MAX_RAM} -XX:+AggressiveOpts -XX:+UseFastAccessorMethods"
+EXTRA_OPTS="-Dfile.encoding=UTF-8 -Dlog4j.debug=true -XX:+UseParallelGC -Xms${JAVA_MAX_RAM} -Xmx${JAVA_MAX_RAM} -XX:+AggressiveOpts"
 export JAVA_OPTS="$EXTRA_OPTS $JAVA_OPTS"
 
 if [ -z "$ESTELA_MAINCLASS" ]; then
