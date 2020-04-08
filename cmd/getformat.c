@@ -34,8 +34,6 @@ char* get_format( unsigned char* buf, int size ) {
 	if (!buf)
 		return NULL;
 
-	av_register_all();
-
 	AVProbeData probe_data;
 	probe_data.buf_size = size;
 	probe_data.buf = buf;
@@ -44,7 +42,7 @@ char* get_format( unsigned char* buf, int size ) {
         if ( !aif )
 		return NULL;
 
-	return aif->name;
+	return (char*)aif->name;
 }
 
 int main(int argc, char **argv)

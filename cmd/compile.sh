@@ -1,1 +1,1 @@
-gcc -g -o getformat -lavformat getformat.c
+gcc -g -Wall -o getformat getformat.c -lavformat
