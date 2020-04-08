@@ -19,7 +19,7 @@
 
 /**
  * format.c
- * Dario Rapisardi <dario@rapisrdi.org>
+ * Dario Rapisardi <dario@rapisardi.org>
  */
 
 #include <stdio.h>
